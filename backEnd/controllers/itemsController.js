@@ -1,6 +1,6 @@
-const producto=require("../models/items")
+const items=require("../models/items")
 
-//Ver la lista de productos
+//VIEW ITEMS'S LIST
 exports.getItems=(req,res,next) =>{
     res.status(200).json({
         success:true,
@@ -8,12 +8,12 @@ exports.getItems=(req,res,next) =>{
     })
 }
 
-//Crear nuevo producto /api/productos
+//Create new item /api/items
 exports.newItem=async(req,res,next)=>{
-    const product= await item.create(req.body);
+    const item = await item.create(req.body);
 
     res.status(201).json({
         success:true,
-        product
+        item
     })
 }
