@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 
 //Import routes
-const productos=require("./routes/item")
+const items=require("./routes/item")
 
 app.use('/api',items) //set route
 
