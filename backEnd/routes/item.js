@@ -1,9 +1,11 @@
 const express=require("express")
 const router=express.Router();
 
-const {getItems, newItem} = require("../controllers/itemsController.js") //Bring the response from Items Controller
+const {getItems, newItem, getItemsByID,updateItem,deleteItem} = require("../controllers/itemsController.js") //Bring the response from Items Controller
 
 router.route('/items').get(getItems)  //Set router for to get THE ITEMS
 router.route('/items/new').post(newItem); //SET THE ROUTER FOR CREATE A NEW ITEM
-
+router.route('/items/:id').get(getItemsByID);//set route for get items by id
+router.route('/items/:id').put(updateItem);//Creacion de la ruta de actualizacion
+router.route('/items/:id').delete(deleteItem); //Creacion de la ruta de eliminacion por id
 module.exports=router;

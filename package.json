@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "E-SHOP",
   "main": "server.js",
+  
   "scripts": {
     "start": "node backEnd/server.js",
     "dev": "SET NODE_END=DEVELOPMENT& nodemon backEnd/server",
@@ -21,7 +22,8 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^6.6.5"
+    "mongoose": "^6.6.5",
+    "node-fetch": "^3.2.10"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
