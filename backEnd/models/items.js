@@ -17,7 +17,7 @@ const itemsSchema=mongoose.Schema({
       type:String,
       required:[true,"Please register the item's desciption."]
     },
-    calificacion:{
+    qualification:{
         type: Number,
         default: 0
     },
@@ -53,17 +53,17 @@ const itemsSchema=mongoose.Schema({
         type:String,
         required:[true,"Please register the seller's name"]
     },
-    inventario:{
+    stock:{
         type: Number,
         required:[true, "Please register the item's stock"],
         maxLength:[5,"The stock can not above to 99999"],
         default:0
     },
-    numCalificaciones:{
+    qualificationsNumber:{
         type:Number,
         default:0
     },
-    opiniones:[
+    opinions:[
         {
             nameClient:{
                 type:String,

@@ -10,7 +10,7 @@ exports.getItems=(req,res,next) =>{
 
 //Create new item /api/items
 exports.newItem=async(req,res,next)=>{
-    const item = await item.create(req.body);
+    const item = await items.create(req.body);
 
     res.status(201).json({
         success:true,
