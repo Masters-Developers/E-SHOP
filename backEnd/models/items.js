@@ -43,7 +43,7 @@ const itemsSchema=mongoose.Schema({
                 "Home",
                 "Clothes",
                 "Medicines",
-                "Animals",
+                "pets",
                 "Toys",
                 "Video Games"
             ]
