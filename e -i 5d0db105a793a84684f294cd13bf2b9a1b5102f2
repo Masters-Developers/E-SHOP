@@ -1,0 +1,161 @@
+[33mcommit eb187831a495224872f6434f0fde70f9d5861f53[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 09:27:41 2022 -0500
+
+    Revert "react installed"
+    
+    This reverts commit 5d0db105a793a84684f294cd13bf2b9a1b5102f2.
+
+[33mcommit 3cd0eb6d24111efad255830fd0035c9267cc2fd0[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 09:21:12 2022 -0500
+
+    Revert "Revert "react installed""
+    
+    This reverts commit 1c221a9843d111e5dc5a7825c0701c101e2e678b.
+
+[33mcommit cfb3a721aa982f0fb57ca5ee0a37b5fd7f675284[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 09:21:09 2022 -0500
+
+    Revert "MOUSE-E-SHOP-BUILDING"
+    
+    This reverts commit 42e762a7b531e0ac5acddd7dc4db057e0be53342.
+
+[33mcommit 7db084424fe246be853daa6f340d13d44507039e[m
+Merge: 0e9e5eb 14b77ef
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 09:20:46 2022 -0500
+
+    Merge branch 'master' of https://github.com/Masters-Developers/E-SHOP
+
+[33mcommit 0e9e5eb8112ea9380f2d5d0785c8558e54a222b7[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 09:19:35 2022 -0500
+
+    Revert "Revert "react installed""
+    
+    This reverts commit c4bddba075df156598cec23d0de2ade5ecd99cd2.
+
+[33mcommit c4bddba075df156598cec23d0de2ade5ecd99cd2[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 08:35:50 2022 -0500
+
+    Revert "react installed"
+    
+    This reverts commit 5d0db105a793a84684f294cd13bf2b9a1b5102f2.
+
+[33mcommit 43d9557a62b4052e218e689ac51fe48b77a1f4d8[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 08:33:48 2022 -0500
+
+    Revert "Revert "react installed""
+    
+    This reverts commit 1c221a9843d111e5dc5a7825c0701c101e2e678b.
+
+[33mcommit 88b323f037c0e5bbaaf666c731a76636f79195c0[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 08:31:05 2022 -0500
+
+    Revert "react installed"
+    
+    This reverts commit 5d0db105a793a84684f294cd13bf2b9a1b5102f2.
+
+[33mcommit cd3ec4f2b75c832186a662ca7141e1d703889cf0[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 08:26:57 2022 -0500
+
+    Revert "Revert "react installed""
+    
+    This reverts commit 1c221a9843d111e5dc5a7825c0701c101e2e678b.
+
+[33mcommit cedef28cb2e6ae6341e61b1d495d770f38ce314b[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 08:26:48 2022 -0500
+
+    Revert "Revert "Revert "react installed"""
+    
+    This reverts commit 850cb0b6ac6bd5f093a684a5d48adf095c3d3cae.
+
+[33mcommit 850cb0b6ac6bd5f093a684a5d48adf095c3d3cae[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 08:26:42 2022 -0500
+
+    Revert "Revert "react installed""
+    
+    This reverts commit 1c221a9843d111e5dc5a7825c0701c101e2e678b.
+
+[33mcommit 14b77efc9f2a6a63f9aecd56c8b3ca7c28d56808[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 42e762a 1c221a9
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 08:15:46 2022 -0500
+
+    Merge branch 'master' of https://github.com/Masters-Developers/E-SHOP
+
+[33mcommit 42e762a7b531e0ac5acddd7dc4db057e0be53342[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 08:15:44 2022 -0500
+
+    MOUSE-E-SHOP-BUILDING
+
+[33mcommit 1c221a9843d111e5dc5a7825c0701c101e2e678b[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 08:05:23 2022 -0500
+
+    Revert "react installed"
+    
+    This reverts commit 5d0db105a793a84684f294cd13bf2b9a1b5102f2.
+
+[33mcommit 5d0db105a793a84684f294cd13bf2b9a1b5102f2[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Thu Oct 13 08:01:16 2022 -0500
+
+    react installed
+
+[33mcommit 6fa03a195e56871739ccef97dad18b2acea36d89[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Wed Oct 12 08:51:02 2022 -0500
+
+    Complete the items  crud
+
+[33mcommit 33922a562bf2039552b4402db269b4093d78fb20[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Tue Oct 11 19:11:56 2022 -0500
+
+    updates on coneection to mongodb
+
+[33mcommit 78b6a55b6f16c2469d6381fbc416049b657915ce[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Tue Oct 11 18:55:14 2022 -0500
+
+    Update server.js
+
+[33mcommit c59080b21804b4de8b71d4155c8039e69cb44aef[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Tue Oct 11 18:54:27 2022 -0500
+
+    Update server.js
+
+[33mcommit 54b4a659a7fb31a564adc877ca0cf0ada5cc3179[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Tue Oct 11 18:18:30 2022 -0500
+
+    Updates
+
+[33mcommit d382392d6e14d9eec96315db15c7b3f6e2708a83[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Tue Oct 11 18:07:15 2022 -0500
+
+    Update app.js
+
+[33mcommit 0d4c5d3244d1dc157ed49f1f4678d4cd430fb6cf[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Tue Oct 11 17:52:35 2022 -0500
+
+    BUILDING BACKEND
+
+[33mcommit 2ee288d713e1dc8679eab687c3d6003b8ebc237f[m[33m ([m[1;32mDevelopment[m[33m)[m
+Author: AndyGreyrat <charles.florez@udea.edu.co>
+Date:   Tue Oct 11 16:02:29 2022 -0500
+
+    Initial commit
