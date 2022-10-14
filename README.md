@@ -17,3 +17,6 @@ Hola! Soy Gabriel Rico Ramirez, actualmente vivo en eun hermoso municipio del Va
 ## Anderson Florez Jaramillo
 
 Hola, mi nombre es charles anderson florez jaramillo, soy relativamente nuevo en este campo de la programación pero me ha apasionado como nada en la vida, al fin encontré mi lugar en esta hermosa rama, espero seguir en un proceso de continuo aprendizaje para llegar a ser un desarrollador senior.
+
+## Lisbeth Angel:
+Hola! Soy Lisbeth Angel, actualmente vivo en Barranquilla y de profesion Administradora de Empresas. Estoy emocionada por aprender de desarrollo web y considero Misión Tic una excelente oportunidad para fortalecer habilidades en este campo
