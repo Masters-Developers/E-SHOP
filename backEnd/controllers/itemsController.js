@@ -1,21 +1,34 @@
 
 const itemss=require("../models/items");
 const ErrorHandler = require("../utilities/errorHandler");
+const APIFeatures = require("../utilities/apiFeatures");
 const catchAsyncErrors = require ("../middleWare/catchAsyncErrors")
 const fetch =(url)=>import('node-fetch').then(({default:fetch})=>fetch(url)); //Import Fetch
+const cloudinary=require("cloudinary")
 //VIEW ITEMS'S LIST
 exports.getItems= catchAsyncErrors( async(req,res,next) =>{
-    const items = await itemss.find();
-    if(!items){
-        return next(new ErrorHandler ("Items not found", 404))
-    }
+    const resPerPage = 8;
+    const itemsCount = await itemss.countDocuments();
+
+    const apiFeatures = new APIFeatures(itemss.find(), req.query)
+        .search()
+        .filter();
+
+    let items = await apiFeatures.query;
+    let filteredItemsCount= items.length;
+    apiFeatures.pagination(resPerPage);
+    items = await apiFeatures.query.clone();
+
     res.status(200).json({
-        success:true,
-        amount: items.length,
+        success: true,
+        itemsCount,
+        resPerPage,
+        filteredItemsCount,
         items
     })
+   
 })
-//VIEW PRODUCTS BY ID
+//VIEW itemS BY ID
 exports.getItemsByID= catchAsyncErrors( async(req,res,next) =>{
     const item = await itemss.findById(req.params.id);
 
@@ -30,9 +43,30 @@ exports.getItemsByID= catchAsyncErrors( async(req,res,next) =>{
 })
 //Create new item /api/items
 exports.newItem= catchAsyncErrors( async(req,res,next)=>{
+    let image=[]
+    if(typeof req.body.image==="string"){
+        image.push(req.body.image)
+    }else{
+        image=req.body.image
+    }
+
+    let imageLink=[]
+
+    for (let i=0; i<image.length;i++){
+        const result = await cloudinary.v2.uploader.upload(image[i],{
+            folder:"items"
+        })
+        imageLink.push({
+            public_id:result.public_id,
+            url: result.secure_url
+        })
+    }
+
+    req.body.image=imageLink
+    req.body.user = req.user.id;
     const item = await itemss.create(req.body);
     res.status(201).json({
-        success:true,
+        success: true,
         item
     })
 })
@@ -40,16 +74,44 @@ exports.newItem= catchAsyncErrors( async(req,res,next)=>{
 exports.updateItem=catchAsyncErrors( async(req,res,next)=>{
     let item = await itemss.findById(req.params.id);
 
-    if(!item){
-        return next(new ErrorHandler ("Item's Id not found", 404))
+    if (!item) {
+        return next(new ErrorHandler("Item not found", 404))
     }
-    item = await itemss.findByIdAndUpdate(req.params.id,req.body,{
-        new:true, 
-        runValidators:true
-    })
+    let image=[]
+
+    if (typeof req.body.image=="string"){
+        image.push(req.body.image)
+    }else{
+        image=req.body.image
+    }
+    if (image!== undefined){
+        //eliminar imagees asociadas con el item
+        for (let i=0; i<item.image.lenght; i++){
+            const result= await cloudinary.v2.uploader.destroy(item.images[i].public_id)
+        }
+
+        let imageLinks=[]
+        for (let i=0; i<image.lenght; i++){
+            const result=await cloudinary.v2.uploader.upload(image[i],{
+                folder:"items"
+            });
+            imageLinks.push({
+                public_id:result.public_id,
+                url: result.secure_url
+            })
+        }
+        req.body.image=imageLinks
+    }
+
+    //Si el objeto si existia, entonces si ejecuto la actualización
+    item = await itemss.findByIdAndUpdate(req.params.id, req.body, {
+        new: true, //Valido solo los atributos nuevos o actualizados
+        runValidators: true
+    });
+    //Respondo Ok si el item si se actualizó
     res.status(200).json({
-        success:true,
-        message:"Succesfully updated Item",
+        success: true,
+        message: "Item Updated Successful",
         item
     })
 })
@@ -65,6 +127,92 @@ exports.deleteItem=catchAsyncErrors( async (req,res,next) =>{
         success:true,
         message:"Succesfully deleted Item"
     })
+})
+exports.createItemReview = catchAsyncErrors(async (req, res, next) => {
+    const { rating, comment, itemId } = req.body;
+
+    const opinion = {
+        clientName: req.user.name,
+        rating: Number(rating),
+        comment
+    }
+
+    const item= await itemss.findById(itemId);
+
+    const isReviewed = item.opinions.find(item =>
+        item.clientName === req.user.name)
+
+    if (isReviewed) {
+        item.opinions.forEach(opinion => {
+            if (opinion.clientName === req.user.name) {
+                opinion.comment = comment,
+                    opinion.rating = rating
+            }
+        })
+    } else {
+        item.opinions.push(opinion)
+        item.qualificationsNumber = item.opinions.length
+    }
+
+    item.qualification = item.opinions.reduce((acc, opinion) =>
+        opinion.rating + acc, 0) / item.opinions.length
+
+    await item.save({ validateBeforeSave: false });
+
+    res.status(200).json({
+        success: true,
+        message: "Your opinion was saved"
+    })
+
+})
+
+//Ver todas las review de un itemo
+exports.getItemReviews = catchAsyncErrors(async (req, res, next) => {
+    const item = await itemss.findById(req.query.id)
+
+    res.status(200).json({
+        success: true,
+        opiniones: item.opinions
+    })
+})
+
+//Eliminar review
+exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
+    const item = await itemss.findById(req.query.itemId);
+
+    const opinionss = item.opinions.filter(opinion =>
+        opinion._id.toString() !== req.query.idReview.toString());
+
+    const qualificationsNumber = opinionss.length;
+
+    const qualification = item.opinions.reduce((acc, Opinion) =>
+        Opinion.rating + acc, 0) / opinionss.length;
+
+    await itemss.findByIdAndUpdate(req.query.itemId, {
+        opinionss,
+        qualification,
+        qualificationsNumber
+    }, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    })
+    res.status(200).json({
+        success: true,
+        message: "Deleted Review correctly"
+    })
+
+})
+exports.getItemsManagement= catchAsyncErrors( async(req,res,next) =>{
+    
+    const items = await itemss.find();
+
+    
+    res.status(200).json({
+        success: true,
+        items
+    })
+   
 })
 //view all items
 function viewItems(){
