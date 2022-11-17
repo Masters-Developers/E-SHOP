@@ -5,18 +5,17 @@ const sendEmail = async options =>{
         host: "smtp.office365.com",
         port: 587,
         auth: {
-          user: "andythecat1328@hotmail.com",
-          pass: "zgdonkzzmsmhmvky"
-        }
-      });
-    const mensaje={
-        from: "E-SHOP <andythecat1328@hotmail.com>",
+            user: "andythecat1328@hotmail.com",
+            pass: "zgdonkzzmsmhmvky"
+            }
+    });
+    const message={
+        from: "MOUSE E SHOP <andythecat1328@hotmail.com>",
         to: options.email,
         subject: options.subject,
-        text: options.mensaje
+        text: options.message
     }
-
-    await transport.sendMail(mensaje)
+    await transport.sendMail(message)
 }
 
 module.exports= sendEmail;
