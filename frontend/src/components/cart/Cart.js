@@ -1,72 +1,53 @@
-import React, { Fragment, useState} from 'react'
-import { Link } from 'react-router-dom'
+import React, { Fragment} from 'react'
+import { Link,useNavigate } from 'react-router-dom'
 import MetaData from '../layouts/MetaData'
+import { addItemToCart, removeItemFromCart } from '../../actions/cartActions'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 const Cart = () => {
-    const [quantity, setQuantity] = useState(1)
-
-    const increaseQty = () => {
-        const contador = document.querySelector('.count')
-        const qty = contador.valueAsNumber+1;
-        setQuantity(qty)
+    const navigate=useNavigate()
+    const dispatch= useDispatch();
+    const {cartItems} = useSelector(state => state.cart)
+    const {user} =useSelector(state => state.auth)
+    const increaseQty = (id, quantity, stock) => {
+        const newQty = quantity+1;
+        if (newQty > stock) return;
+        dispatch(addItemToCart(id, newQty))
      }
   
-     const decreaseQty = () => {
-      const contador = document.querySelector('.count')
-  
-      const qty = contador.valueAsNumber-1;
-      setQuantity(qty)
+     const decreaseQty = (id, quantity) => {
+        const newQty = quantity-1;
+        if (newQty <= 0) return;
+        dispatch(addItemToCart(id, newQty))
    }
 
-    //Json de ejemplo
-   let cartItems=[
-        {
-            "_id": "63581a34ff5a476990e3d1be",
-            "name": "Tofu",
-            "price": 5000,
-            "image": "./images/items/tofu.jpg",
-            "stock": 40,
-        },
-        {
-            "_id": "63581abdff5a476990e3d1c1",
-            "name": "Vegan Choco Cake",
-            "price": 7000,
-            "image": "./images/items/ChokoCake.jpg",
-            "stock": 120,
-        },
-        {
-            "_id": "635a7666eb666306e96617b8",
-            "name": "MSI LAPTOP",
-            "price": 7000000,
-            "image": "./images/items/msi.png",
-            "stock": 20,
-        },
-        {
-            "_id": "635ad7d279a49f39c3998836",
-            "name": "Samsung QLED 46 inch",
-            "price": 3800000,
-            "image":  "./images/items/samsung.webp",
-            "stock": 13,
-        }
-    ]
-
-cartItems = Array.from(cartItems);
+   const removeCartItemHandler= (id)=>{
+    dispatch(removeItemFromCart(id))
+   }
+   const checkOutHandler = () =>{
+    if (user){
+        navigate("/shipping")
+    }
+    else{
+        navigate("/login")
+    }
+}
 
     return (
         <Fragment>
-            <MetaData title={'Your Cart'} />
+            <MetaData title={'My Cart'} />
             
 
-            {cartItems.length === 0 ? <h2 className="mt-5">Your cart is empty</h2> : (
+            {cartItems.length === 0 ? <h2 className="mt-5">Your Cart Is Empty</h2> : (
                 <Fragment>
                     
-                    <h2 className="mt-5">Your Cart: <b>{cartItems.length} items</b></h2>
+                    <h2 className="mt-5">Your Cart: <b>{cartItems.reduce((acc, item)=>(acc+Number(item.quantity)),0)} items</b></h2>
 
                     <div className="row d-flex justify-content-between">
                         <div className="col-12 col-lg-8">
 
-                        {cartItems && cartItems.map (item => (
+                        {cartItems && cartItems.map(item => (
                                 <Fragment>
                                     <hr />
 
@@ -77,7 +58,7 @@ cartItems = Array.from(cartItems);
                                             </div>
 
                                             <div className="col-5 col-lg-3">
-                                                <Link to={`/producto/${item._id}`}>{item.name}</Link>
+                                                <Link to={`/items/${item.item}`}>{item.name}</Link>
                                             </div>
 
 
@@ -87,16 +68,16 @@ cartItems = Array.from(cartItems);
 
                                             <div className="col-4 col-lg-3 mt-4 mt-lg-0">
                                                 <div className="stockCounter d-inline">
-                                                    <span className="btn btn-danger minus" onClick={decreaseQty}>-</span>
+                                                    <span className="btn btn-danger minus" onClick={() => decreaseQty(item.item, item.quantity)}>-</span>
 
-                                                    <input type="number" className="form-control count d-inline" value={quantity} readOnly />
+                                                    <input type="number" className="form-control count d-inline" value={item.quantity} readOnly />
 
-                                                    <span className="btn btn-primary plus" onClick={increaseQty}>+</span>
+                                                    <span className="btn btn-primary plus" onClick={()=>increaseQty(item.item, item.quantity, item.stock)}>+</span>
                                                 </div>
                                             </div>
 
                                             <div className="col-4 col-lg-1 mt-4 mt-lg-0">
-                                                <i id="delete_cart_item" className="fa fa-trash btn btn-danger" ></i>
+                                                <i id="delete_cart_item" className="fa fa-trash btn btn-danger" onClick={() => removeCartItemHandler(item.item)}></i>
                                             </div>
 
                                         </div>
@@ -109,13 +90,13 @@ cartItems = Array.from(cartItems);
 
                         <div className="col-12 col-lg-3 my-4">
                             <div id="order_summary">
-                                <h4>Total Purchase</h4>
+                                <h4>Total Amount </h4>
                                 <hr />
-                                <p>Subtotal:  <span className="order-summary-values">$350.000</span></p>
-                                <p>Est. total: <span className="order-summary-values">$380.000</span></p>
+                                <p>items:  <span className="order-summary-values">{cartItems.reduce((acc, item)=>(acc+Number(item.quantity)),0)} (Unities)</span></p>
+                                <p>Total Amount: <span className="order-summary-values">${cartItems.reduce((acc, item)=> acc+(item.quantity*item.price),0).toFixed(2)}</span></p>
 
                                 <hr />
-                                <button id="checkout_btn" className="btn btn-primary btn-block">Buy</button>
+                                <button id="checkout_btn" className="btn btn-primary btn-block" onClick={checkOutHandler}>Buy!</button>
                             </div>
                         </div>
                     </div>
