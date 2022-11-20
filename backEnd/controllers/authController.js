@@ -5,8 +5,14 @@ const sendToken = require("../utilities/jwtToken")
 const sendEmail = require("../utilities/sendEmail")
 const crypto = require("crypto")
 const cloudinary= require("cloudinary")
+<<<<<<< HEAD
 //Users Registration
 
+=======
+
+
+//Create a new user  
+>>>>>>> e6e6ad49fbc8d076d805bd2b088b190e2f68404e
 exports.userRegistration= catchAsyncErrors(async (req, res, next) =>{
     const {name, email, password} = req.body;
     const result= await cloudinary.v2.uploader.upload(req.body.photo, {
@@ -23,7 +29,11 @@ exports.userRegistration= catchAsyncErrors(async (req, res, next) =>{
             url:result.secure_url
         }
     })
+<<<<<<< HEAD
     sendToken(user,201,res)
+=======
+    tokenEnviado(user,201,res)
+>>>>>>> e6e6ad49fbc8d076d805bd2b088b190e2f68404e
 })
 //Log In
 exports.logInUser = catchAsyncErrors(async(req,res,next) =>{
@@ -40,7 +50,17 @@ exports.logInUser = catchAsyncErrors(async(req,res,next) =>{
         return next(new ErrorHandler("Invalid Password",401))
     }
 
+<<<<<<< HEAD
     sendToken(user,200,res)
+=======
+    //Compare passwords
+    const contrasenaOK= await user.compararPass(password);
+
+    if (!contrasenaOK){
+        return next(new ErrorHandler("Invalid password",401))
+    }
+    tokenEnviado(user,200,res)
+>>>>>>> e6e6ad49fbc8d076d805bd2b088b190e2f68404e
 })
 //logout
 exports.logOut = catchAsyncErrors(async(req, res, next)=>{
@@ -90,7 +110,12 @@ exports.forgotPassword = catchAsyncErrors ( async( req, res, next) =>{
         return next(new ErrorHandler(error.message, 500))
     }
 })
+<<<<<<< HEAD
 //Reset Password
+=======
+
+//Reset password
+>>>>>>> e6e6ad49fbc8d076d805bd2b088b190e2f68404e
 exports.resetPassword = catchAsyncErrors(async (req,res,next) =>{
     //Hash el token que llego con la URl
     const resetPasswordToken= crypto.createHash("sha256").update(req.params.token).digest("hex")
@@ -124,12 +149,25 @@ exports.getUserProfile = catchAsyncErrors(async(req,res,next) => {
         user
     })
 })
+<<<<<<< HEAD
 exports.updatePassword = catchAsyncErrors(async(req,res,next) => {
     const user = await User.findById(req.user.id).select("+password");
     //validations if old password = new password
     const samePasswords = await user.comparePassword(req.body.oldPassword)
     if(!samePasswords){
         return next (new ErrorHandler("The old password and the current password are not the same",401))
+=======
+
+//Update password (usuario logueado)
+exports.updatePassword= catchAsyncErrors(async (req, res, next) =>{
+    const user= await User.findById(req.user.id).select("+password");
+
+    //Check if the old password is the same as the new one
+    const itsTheSame = await user.compararPass(req.body.oldPassword)
+
+    if (!itsTheSame){
+        return next (new ErrorHandler("The current password is not correct", 401))
+>>>>>>> e6e6ad49fbc8d076d805bd2b088b190e2f68404e
     }
     user.password = req.body.newPassword;
     await user.save()
@@ -170,7 +208,12 @@ exports.updateProfile = catchAsyncErrors(async(req,res,next) =>{
 })
 
 
+<<<<<<< HEAD
 //view al users
+=======
+//Controllers services over users by the ADMIN
+//View all users
+>>>>>>> e6e6ad49fbc8d076d805bd2b088b190e2f68404e
 exports.getAllUsers = catchAsyncErrors(async(req, res, next)=>{
     const users = await User.find();
 

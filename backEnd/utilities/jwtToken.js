@@ -17,4 +17,8 @@ const sendToken= (user, statusCode, res) =>{
         user
     })
 }
+<<<<<<< HEAD
 module.exports = sendToken;
+=======
+module.exports= tokenEnviado;
+>>>>>>> e6e6ad49fbc8d076d805bd2b088b190e2f68404e
