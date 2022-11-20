@@ -87,12 +87,12 @@ exports.updateItem=catchAsyncErrors( async(req,res,next)=>{
     if (image!== undefined){
         //eliminar imagees asociadas con el item
         for (let i=0; i<item.image.lenght; i++){
-            const result= await cloudinary.v2.uploader.destroy(item.images[i].public_id)
+            const result= await cloudinary.v2.uploader.destroy(item.image[i].public_id)
         }
 
         let imageLinks=[]
         for (let i=0; i<image.lenght; i++){
-            const result=await cloudinary.v2.uploader.upload(image[i],{
+            const result = await cloudinary.v2.uploader.upload(image[i],{
                 folder:"items"
             });
             imageLinks.push({

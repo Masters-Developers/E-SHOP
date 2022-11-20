@@ -5,8 +5,8 @@ const ErrorHandler =require("../utilities/errorHandler")
 //create new order
 exports.newOrder=catchAsyncErrors(async(req,res,next) => {
     const {
-        items,
         sendInfo,
+        items,
         itemsPrice,
         tax,
         sendPrice,
@@ -15,15 +15,17 @@ exports.newOrder=catchAsyncErrors(async(req,res,next) => {
     } = req.body;
 
     const order= await Order.create({
-        items,
         sendInfo,
+        user: req.user._id,
+        items,
+        payInfo,
+        payDate: Date.now(),
         itemsPrice,
         tax,
         sendPrice,
         totalPrice,
-        payInfo,
-        payDate: Date.now(),
-        user: req.user._id
+        orderState,
+        creationDate:Date.now()
     })
 
     res.status(200).json({
@@ -45,7 +47,7 @@ exports.getOrderbyId=catchAsyncErrors(async(req,res,next)=>{
 
 //view all my orders
 exports.viewMyOrders=catchAsyncErrors(async(req,res,next)=>{
-    const orders = await Order.find({user:req.user.id});
+    const orders = await Order.find({user:req.user._id});
     res.status(200).json({
         success:true,
         orders
@@ -56,7 +58,7 @@ exports.viewAllOrders=catchAsyncErrors(async(req,res,next)=>{
     const orders = await Order.find();
     let totalAmount = 0;
     orders.forEach(order=>{
-        totalAmount = totalAmount + orders.totalPrice
+        totalAmount = totalAmount + order.totalPrice
     })
     res.status(200).json({
         success:true,
@@ -66,19 +68,25 @@ exports.viewAllOrders=catchAsyncErrors(async(req,res,next)=>{
 })
 //update order
 exports.updateOrder = catchAsyncErrors(async(req,res,next)=>{
-    const order = await Order.findById(req.params.id);
+    const order = await Order.findById(req.params._id);
     if(!order){
         return next(new ErrorHandler("Order not found",404))
     }
-    if (order==="send"){
+    if (order.orderState==="Send" && req.body.orderState==="Send"){
         return next(new ErrorHandler("This order was send",400))
     }
+    if (req.body.state!=="Processing"){
+        order.items.forEach(async itemo => {
+            await updateStock(itemo.item, itemo.amount)
+        })
+    }
     order.orderState =req.body.orderState;
-    order.sendDate = Date.now();
+    order.creationDate = Date.now();
     await order.save()
 
     res.status(200).json({
-        success:true
+        success:true,
+        order
     })
 })
 

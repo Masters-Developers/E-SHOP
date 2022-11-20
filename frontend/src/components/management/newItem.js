@@ -13,13 +13,13 @@ const NewItem = () => {
     const [name, setName] = useState("")
     const [price, setPrice] = useState(0)
     const [description, setDescription] = useState("")
-    const [category, setCategory] = useState("")
-    const [stock, setstock] = useState(0)
-    const [seller, setseller] = useState("")
+    const [categ, setCategory] = useState("")
+    const [stock, setStock] = useState(0)
+    const [seller, setSeller] = useState("")
     const [image, setImage] = useState([])
     const [imagePreview, setImagePreview] = useState([])
 
-    const categories = [
+    const category= [
         "Technology",
         "Food",
         "Home",
@@ -53,7 +53,7 @@ const NewItem = () => {
         formData.set("name", name);
         formData.set("price", price)
         formData.set("description", description)
-        formData.set("category", category)
+        formData.set("category", categ)
         formData.set("stock", stock)
         formData.set("seller", seller)
 
@@ -133,10 +133,10 @@ const NewItem = () => {
                                     <label htmlFor="category_field">Category</label>
                                     <select className="form-control"
                                         id="category_field"
-                                        value={category}
+                                        value={categ}
                                         onChange={(e) => setCategory(e.target.value)}>
-                                        {categories.map(category => (
-                                            <option key={category} value={category}>{category}</option>
+                                        {category.map(categ=> (
+                                            <option key={categ} value={categ}>{categ}</option>
                                         ))}
 
                                     </select>
@@ -148,7 +148,7 @@ const NewItem = () => {
                                         id="stock_field"
                                         className="form-control"
                                         value={stock}
-                                        onChange={(e) => setstock(e.target.value)}
+                                        onChange={(e) => setStock(e.target.value)}
                                     />
                                 </div>
 
@@ -159,7 +159,7 @@ const NewItem = () => {
                                         id="seller_field"
                                         className="form-control"
                                         value={seller}
-                                        onChange={(e) => setseller(e.target.value)}
+                                        onChange={(e) => setSeller(e.target.value)}
                                     />
                                 </div>
 
@@ -181,7 +181,7 @@ const NewItem = () => {
                                     </div>
                                     {imagePreview.map(img => (
                                         <img src={img} key={img} alt="Preview Item"
-                                            className='mt-3 mr-2' width="55" height="52" />
+                                            className='mt-3 mr-2' width="55" height="55" />
                                     ))}
 
                                 </div>

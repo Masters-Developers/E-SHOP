@@ -48,11 +48,6 @@ const orderSchema = mongoose.Schema({
         }
 
     }],
-    itemsPrice:{
-        type:Number,
-        required: true,
-        default: 0.0
-    },
     payInfo:{
         id:{
             type:String
@@ -63,6 +58,11 @@ const orderSchema = mongoose.Schema({
     },
     payDate:{
         type:Date
+    },
+    itemsPrice:{
+        type:Number,
+        required: true,
+        default: 0.0
     },
     tax:{
         type:Number,
@@ -84,7 +84,7 @@ const orderSchema = mongoose.Schema({
         required:true,
         default:"Pending"
     },
-    sendDate:{
+    creationDate:{
         type:Date,
         default:Date.now
     }

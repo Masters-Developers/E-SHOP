@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node backEnd/server.js",
     "dev": "SET NODE_END=DEVELOPMENT& nodemon backEnd/server",
-    "prod": "SET NODE_END=PRODUCTION& nodemon backEnd/server"
+    "prod": "SET NODE_END=PRODUCTION& nodemon backEnd/server",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false && NODE_OPTIONS=--openssl-legacy-provider && npm install --force --prefix front && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,7 @@
     "express-fileupload": "^1.4.0",
     "jsonwebtoken": "^8.5.1",
     "mdbreact": "^5.2.0",
-    "mongoose": "^6.6.5",
+    "mongoose": "^6.6.4",
     "node-fetch": "^3.2.10",
     "nodemailer": "^6.8.0",
     "validator": "^13.7.0"

@@ -4,19 +4,19 @@ export const cartReducer = (state = { cartItems: []}, action) => {
     switch (action.type) {
 
         case ADD_TO_CART:
-            const item = action.payload;
+            const itemc = action.payload;
 
-            const isItemExist = state.cartItems.find(i => i.item === item.item)
+            const isItemExist = state.cartItems.find(i => i.item === itemc.item)
 
             if (isItemExist) {
                 return {
                     ...state,
-                    cartItems: state.cartItems.map(i => i.item === isItemExist.item ? item : i)
+                    cartItems: state.cartItems.map(i => i.item === isItemExist.item ? itemc : i)
                 }
             } else {
                 return {
                     ...state,
-                    cartItems: [...state.cartItems, item]
+                    cartItems: [...state.cartItems, itemc]
                 }
             }
 

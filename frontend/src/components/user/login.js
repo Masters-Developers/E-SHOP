@@ -46,6 +46,7 @@ export const Login =() =>{
 
                     {/*Log In Button*/}
                     <button id="login_button" type="submit" className='btn btn-block py-3'>Log In</button>
+                    
                     {/*Register Button*/}
                     <Link to="/registration"><button id="login_button" type="submit" className='btn btn-block py-3'>Register</button></Link>
         

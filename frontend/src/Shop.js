@@ -1,14 +1,14 @@
 
 
 //import {configureStore} from '@reduxjs/toolkit'
-import { itemReducer, itemDetailsReducer, newItemReducer ,itemUpdateandDeleteReducer} from './reducers/itemReducer';
-import { authReducer , forgotPasswordReducer, userReducer } from './reducers/userReducer';
+import { itemReducer, itemDetailsReducer, newItemReducer ,itemUpdateandDeleteReducer, newReviewReducer, itemReviewsReducer, reviewReducer} from './reducers/itemReducer';
+import { authReducer , forgotPasswordReducer, userReducer,allUsersReducer, userDetailsReducer  } from './reducers/userReducer';
 import { cartReducer } from './reducers/cartReducer';
-import { newOrderReducer } from './reducers/orderReducer';
+import { allOrdersReducer, myOrdersReducer, newOrderReducer, orderDetailsReducer, orderReducer } from './reducers/orderReducer';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-const reduce= combineReducers ({
+const reducer= combineReducers ({
     items:itemReducer,
     itemDetails: itemDetailsReducer,
     auth : authReducer,
@@ -16,8 +16,17 @@ const reduce= combineReducers ({
     forgotPassword: forgotPasswordReducer,
     cart: cartReducer,
     newItem: newItemReducer,
-    updateDelete:itemUpdateandDeleteReducer,
-    neworder:newOrderReducer,
+    item:itemUpdateandDeleteReducer,
+    newOrder:newOrderReducer,
+    myOrders: myOrdersReducer,
+    orderDetails: orderDetailsReducer,
+    newReview: newReviewReducer,
+    allOrders: allOrdersReducer,
+    order: orderReducer,
+    allUsers: allUsersReducer,
+    userDetails: userDetailsReducer,
+    itemReviews: itemReviewsReducer,
+    review: reviewReducer
 })
 let initialState = {
     cart: {
@@ -30,6 +39,6 @@ let initialState = {
     }
 }
 const middleware = [thunk]
-const shop= createStore(reduce, initialState, composeWithDevTools(applyMiddleware(...middleware)))
+const shop= createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleware)))
 //const shop = configureStore({reducer:reduce,initialState})
 export default shop;

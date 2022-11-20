@@ -1,7 +1,7 @@
 [  
     {  
         "id":0,
-        "department":"Amazonas",
+        "state":"Amazonas",
         "cities":[  
             "Leticia",
             "Puerto Nari\u00f1o"
@@ -9,7 +9,7 @@
     },
     {  
         "id":1,
-        "department":"Antioquia",
+        "state":"Antioquia",
         "cities":[  
             "Abejorral",
             "Abriaqu\u00ed",
@@ -140,7 +140,7 @@
     },
     {  
         "id":2,
-        "department":"Arauca",
+        "state":"Arauca",
         "cities":[  
             "Arauca",
             "Arauquita",
@@ -153,7 +153,7 @@
     },
     {  
         "id":3,
-        "department":"Atl\u00e1ntico",
+        "state":"Atl\u00e1ntico",
         "cities":[  
             "Baranoa",
             "Barranquilla",
@@ -182,7 +182,7 @@
     },
     {  
         "id":4,
-        "department":"Bol\u00edvar",
+        "state":"Bol\u00edvar",
         "cities":[  
             "Ach\u00ed",
             "Altos del Rosario",
@@ -235,7 +235,7 @@
     },
     {  
         "id":5,
-        "department":"Boyac\u00e1",
+        "state":"Boyac\u00e1",
         "cities":[  
             "Almeida",
             "Aquitania",
@@ -364,7 +364,7 @@
     },
     {  
         "id":6,
-        "department":"Caldas",
+        "state":"Caldas",
         "cities":[  
             "Aguadas",
             "Anserma",
@@ -397,7 +397,7 @@
     },
     {  
         "id":7,
-        "department":"Caquet\u00e1",
+        "state":"Caquet\u00e1",
         "cities":[  
             "Albania",
             "Bel\u00e9n de los Andaqu\u00edes",
@@ -419,7 +419,7 @@
     },
     {  
         "id":8,
-        "department":"Casanare",
+        "state":"Casanare",
         "cities":[  
             "Aguazul",
             "Ch\u00e1meza",
@@ -444,7 +444,7 @@
     },
     {  
         "id":9,
-        "department":"Cauca",
+        "state":"Cauca",
         "cities":[  
             "Almaguer",
             "Argelia",
@@ -492,7 +492,7 @@
     },
     {  
         "id":10,
-        "department":"Cesar",
+        "state":"Cesar",
         "cities":[  
             "Aguachica",
             "Agust\u00edn Codazzi",
@@ -523,7 +523,7 @@
     },
     {  
         "id":11,
-        "department":"Choc\u00f3",
+        "state":"Choc\u00f3",
         "cities":[  
             "Acand\u00ed",
             "Alto Baud\u00f3",
@@ -559,7 +559,7 @@
     },
     {  
         "id":12,
-        "department":"Cundinamarca",
+        "state":"Cundinamarca",
         "cities":[  
             "Agua de Dios",
             "Alb\u00e1n",
@@ -682,7 +682,7 @@
     },
     {  
         "id":13,
-        "department":"C\u00f3rdoba",
+        "state":"C\u00f3rdoba",
         "cities":[  
             "Ayapel",
             "Buenavista",
@@ -718,14 +718,14 @@
     },
     {  
         "id":14,
-        "department":"Guain\u00eda",
+        "state":"Guain\u00eda",
         "cities":[  
             "In\u00edrida"
         ]
     },
     {  
         "id":15,
-        "department":"Guaviare",
+        "state":"Guaviare",
         "cities":[  
             "Calamar",
             "El Retorno",
@@ -735,7 +735,7 @@
     },
     {  
         "id":16,
-        "department":"Huila",
+        "state":"Huila",
         "cities":[  
             "Acevedo",
             "Agrado",
@@ -778,7 +778,7 @@
     },
     {  
         "id":17,
-        "department":"La Guajira",
+        "state":"La Guajira",
         "cities":[  
             "Albania",
             "Barrancas",
@@ -799,7 +799,7 @@
     },
     {  
         "id":18,
-        "department":"Magdalena",
+        "state":"Magdalena",
         "cities":[  
             "Algarrobo",
             "Aracataca",
@@ -836,7 +836,7 @@
     },
     {  
         "id":19,
-        "department":"Meta",
+        "state":"Meta",
         "cities":[  
             "Acac\u00edas",
             "Barranca de Up\u00eda",
@@ -871,7 +871,7 @@
     },
     {  
         "id":20,
-        "department":"Nari\u00f1o",
+        "state":"Nari\u00f1o",
         "cities":[  
             "Aldana",
             "Ancuy\u00e1",
@@ -941,7 +941,7 @@
     },
     {  
         "id":21,
-        "department":"Norte de Santander",
+        "state":"Norte de Santander",
         "cities":[  
             "\u00c1brego",
             "Arboledas",
@@ -987,7 +987,7 @@
     },
     {  
         "id":22,
-        "department":"Putumayo",
+        "state":"Putumayo",
         "cities":[  
             "Col\u00f3n",
             "Mocoa",
@@ -1006,7 +1006,7 @@
     },
     {  
         "id":23,
-        "department":"Quind\u00edo",
+        "state":"Quind\u00edo",
         "cities":[  
             "Armenia",
             "Buenavista",
@@ -1024,7 +1024,7 @@
     },
     {  
         "id":24,
-        "department":"Risaralda",
+        "state":"Risaralda",
         "cities":[  
             "Ap\u00eda",
             "Balboa",
@@ -1044,7 +1044,7 @@
     },
     {  
         "id":25,
-        "department":"San Andr\u00e9s y Providencia",
+        "state":"San Andr\u00e9s y Providencia",
         "cities":[  
             "Providencia y Santa Catalina Islas",
             "San Andr\u00e9s"
@@ -1052,7 +1052,7 @@
     },
     {  
         "id":26,
-        "department":"Santander",
+        "state":"Santander",
         "cities":[  
             "Aguada",
             "Albania",
@@ -1145,7 +1145,7 @@
     },
     {  
         "id":27,
-        "department":"Sucre",
+        "state":"Sucre",
         "cities":[  
             "Buenavista",
             "Caimito",
@@ -1177,7 +1177,7 @@
     },
     {  
         "id":28,
-        "department":"Tolima",
+        "state":"Tolima",
         "cities":[  
             "Alpujarra",
             "Alvarado",
@@ -1230,7 +1230,7 @@
     },
     {  
         "id":29,
-        "department":"Valle del Cauca",
+        "state":"Valle del Cauca",
         "cities":[  
             "Alcal\u00e1",
             "Andaluc\u00eda",
@@ -1278,7 +1278,7 @@
     },
     {  
         "id":30,
-        "department":"Vaup\u00e9s",
+        "state":"Vaup\u00e9s",
         "cities":[  
             "Carur\u00fa",
             "Mit\u00fa",
@@ -1287,7 +1287,7 @@
     },
     {  
         "id":31,
-        "department":"Vichada",
+        "state":"Vichada",
         "cities":[  
             "Cumaribo",
             "La Primavera",

@@ -6,17 +6,17 @@ import { useNavigate } from 'react-router-dom';
 import CheckoutSteps from './CheckOutSteps';
 
 export const Shipping = () => {
-    let Country = require('./Colombia.json');
+    let country = require('./Colombia.json');
     const navigate= useNavigate()
     const { shippingInfo } = useSelector(state => state.cart)
     const [adress, setAdress] = useState(shippingInfo.adress)
     const [city, setCity] = useState(shippingInfo.city)
     const [phone, setPhone] = useState(shippingInfo.phone)
-    const [department, setDepartment] = useState(shippingInfo.department)
+    const [state, setState] = useState(shippingInfo.state)
     const [cities, setCities]= useState([])
     useEffect(()=>{
-      Country.forEach((depar)=>{
-        if (depar.department===department){
+      country.forEach((depar)=>{
+        if (depar.state===state){
             setCities(depar.cities)
         }
       })
@@ -24,7 +24,7 @@ export const Shipping = () => {
     const dispatch= useDispatch();
     const submitHandler= (e)=>{
         e.preventDefault()
-        dispatch(saveShippingInfo({adress, city, phone, department}))
+        dispatch(saveShippingInfo({adress, city, phone, state}))
         navigate("/order/confirm")
     }
     return (
@@ -61,18 +61,18 @@ export const Shipping = () => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="country_field">Department</label>
+                            <label htmlFor="country_field">State</label>
                             <select
                                 id="country_field"
                                 className="form-control"
-                                value={department}
-                                onChange={(e) => setDepartment(e.target.value)}
+                                value={state}
+                                onChange={(e) => setState(e.target.value)}
                                 required
                             >
 
-                                {Country.map(dep => (
-                                    <option key={dep.department} value={dep.department}>
-                                        {dep.department}
+                                {country.map(dep => (
+                                    <option key={dep.state} value={dep.state}>
+                                        {dep.state}
                                     </option>
                                 ))}
 

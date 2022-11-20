@@ -42,11 +42,11 @@ export const Payment = () => {
     const orderInfo= JSON.parse(sessionStorage.getItem("orderInfo"));
 
     if (orderInfo){
-        order.priceItems= orderInfo.priceItems
-        order.priceSend=orderInfo.priceSend
-        order.priceTax= orderInfo.priceTax
-        order.priceTotal= orderInfo.priceTotal
-        order.paymentInfo={
+        order.itemsPrice= orderInfo.itemsPrice
+        order.sendPrice=orderInfo.sendPrice
+        order.tax= orderInfo.tax
+        order.totalPrice= orderInfo.totalPrice
+        order.payInfo={
             id:id,
             state:"Accepted"
         }
@@ -76,7 +76,7 @@ export const Payment = () => {
                     <form className="shadow-lg" onSubmit={submitHandler} >
                         <h1 className="mb-4">Card Information</h1>
                         <div className="form-group">
-                            <label htmlFor="card_num_field">Card Information</label>
+                            <label htmlFor="card_num_field">Card Number</label>
                             <input
                                 type="number"
                                 id="card_num_field"
@@ -108,7 +108,7 @@ export const Payment = () => {
                             type="submit"
                             className="btn btn-block py-3"
                         >
-                            Pay ${` - ${orderInfo && orderInfo.priceTotal}`}
+                            Pay ${` - ${orderInfo && orderInfo.totalPrice}`}
                         </button>
 
                     </form>

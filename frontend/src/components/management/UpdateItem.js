@@ -13,14 +13,14 @@ export const UpdateItem = () => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
-    const [category, setCategory] = useState('');
+    const [categ, setCateg] = useState('');
     const [stock, setStock] = useState(0);
     const [seller, setSeller] = useState('');
     const [image, setImage] = useState([]);
     const [imagePreview, setImagePreview] = useState([])
     const [oldimage, setOldImage] = useState([])
 
-    const catrogories = [
+    const category = [
         "Technology",
         "Food",
         "Home",
@@ -45,7 +45,7 @@ export const UpdateItem = () => {
             setName(item.name);
             setPrice(item.price);
             setDescription(item.description);
-            setCategory(item.category);
+            setCateg(item.category);
             setSeller(item.seller);
             setStock(item.stock);
             setOldImage(item.image)
@@ -73,7 +73,7 @@ export const UpdateItem = () => {
         formData.set('name', name);
         formData.set('price', price);
         formData.set('description', description);
-        formData.set('category', category);
+        formData.set('category', categ);
         formData.set('stock', stock);
         formData.set('seller', seller);
 
@@ -155,10 +155,10 @@ export const UpdateItem = () => {
                             <label htmlFor="category_field">Category</label>
                             <select className="form-control" 
                             id="category_field" 
-                            value={category} 
-                            onChange={(e) => setCategory(e.target.value)}>
-                                {catrogories.map(category => (
-                                    <option key={category} value={category} >{category}</option>
+                            value={categ} 
+                            onChange={(e) => setCateg(e.target.value)}>
+                                {category.map(categ => (
+                                    <option key={categ} value={categ} >{categ}</option>
                                 ))}
 
                             </select>

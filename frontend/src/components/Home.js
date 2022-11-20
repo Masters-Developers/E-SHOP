@@ -52,7 +52,6 @@ export const Home = () => {
                             }}
                             value={price}
                             onChange={price => setPrice(price)}>
-                                
                             </Slider>
                             {items && items.map (item => (
                                 <div key={item._id} className='col-sm-12 col-md-6 col-lg-3 my-3'>
@@ -75,7 +74,7 @@ export const Home = () => {
                             ))}
                         </div>
                     </section>
-                    <div className='d-flex justify-content-center mt-5'>
+                    <div className='d-flex justify-content-center mt-5' id ="pagination" >
                         <Pagination 
                         activePage={currentPage}
                         itemsCountPerPage={resPerPage}

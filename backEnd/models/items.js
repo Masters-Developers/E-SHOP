@@ -65,7 +65,7 @@ const itemsSchema=mongoose.Schema({
     },
     opinions:[
         {
-            nameClient:{
+            clientName:{
                 type:String,
                 required:true
             },
@@ -73,12 +73,18 @@ const itemsSchema=mongoose.Schema({
                 type:Number,
                 required:true
             },
-            comments:{
+            comment:{
                 type:String,
                 required:true
             }
         }
     ],
+    user:{
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: true
+    },
+
     creationDate:{
         type:Date,
         default:Date.now

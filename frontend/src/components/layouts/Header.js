@@ -50,8 +50,7 @@ const Header = () => {
                                 {user && user.role === "management" && (
                                     <Link className="dropdown-item" to="/dashboard">Manage Items</Link>
                                 )}
-
-                                <Link className="dropdown-item" to="/">Orders</Link>
+                                <Link className="dropdown-item" to="/myorders">My Orders</Link>
                                 <Link className="dropdown-item" to="/myprofile">My Profile</Link>
                                 <Link className="dropdown-item" to="/" onClick={logoutHandler}>Log Out</Link>
                             </div>
