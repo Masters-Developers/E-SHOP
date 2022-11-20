@@ -6,16 +6,12 @@ const catchAsyncErrors= require("../middleware/catchAsyncErrors")
 //existence and veracity of the token 
 exports.isAuthenticatedUser= catchAsyncErrors(async (req, res, next)=>{
     const {token}= req.cookies
-
     if(!token){
         return next(new ErrorHandler("You must be logged in to access this resource", 401))
     }
-
     const decodificada = jwt.decode(token, process.env.JWT_SECRET)
     req.user=await User.findById(decodificada.id);
-
     next()
-
 })
 
 //Capture role

@@ -8,7 +8,6 @@ const cloudinary= require("cloudinary")
 
 
 //Create a new user  
-
 exports.userRegistration= catchAsyncErrors(async (req, res, next) =>{
     const {name, email, password} = req.body;
 
@@ -27,9 +26,7 @@ exports.userRegistration= catchAsyncErrors(async (req, res, next) =>{
             url:result.secure_url
         }
     })
-
     tokenEnviado(user,201,res)
-
 })
 
 //Login
@@ -53,9 +50,7 @@ exports.loginUser = catchAsyncErrors(async(req, res, next)=>{
     if (!contrasenaOK){
         return next(new ErrorHandler("Invalid password",401))
     }
-
     tokenEnviado(user,200,res)
-
 })
 
 //Logout
@@ -107,7 +102,6 @@ exports.forgotPassword = catchAsyncErrors ( async( req, res, next) =>{
     }
 })
 
-
 //Reset password
 exports.resetPassword = catchAsyncErrors(async (req,res,next) =>{
     //Hash el token que llego con la URl
@@ -144,7 +138,6 @@ exports.getUserProfile= catchAsyncErrors( async (req, res, next)=>{
         user
     })
 })
-
 
 //Update password (usuario logueado)
 exports.updatePassword= catchAsyncErrors(async (req, res, next) =>{
@@ -204,7 +197,6 @@ exports.updateProfile= catchAsyncErrors(async(req,res,next)=>{
 
 
 //Controllers services over users by the ADMIN
-
 //View all users
 exports.getAllUsers = catchAsyncErrors(async(req, res, next)=>{
     const users = await User.find();
@@ -265,4 +257,3 @@ exports.deleteUser= catchAsyncErrors (async (req, res, next)=>{
         message:"User deleted successfully"
     })
 })
-

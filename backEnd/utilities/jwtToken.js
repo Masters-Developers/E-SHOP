@@ -18,5 +18,4 @@ const tokenEnviado= (user, statusCode, res) =>{
         user
     })
 }
-
 module.exports= tokenEnviado;
